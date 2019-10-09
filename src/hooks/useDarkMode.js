@@ -3,19 +3,19 @@ import { useEffect } from 'react'
 
 
 export function useDarkMode() {
-    const [darkMode, setDarkMode] = useLocalStorage(key, false)
+    const [value, setValue] = useLocalStorage("key", false)
 
     useEffect(() => {
-        setDarkMode(darkMode)
-        if (darkMode) {
-            mode = document.getElementByTagName('body')
+        const mode = document.querySelector('body')
+        if (value) {
+
             mode.classList.add('dark-mode')
-        }else {
+        } else {
             mode.classList.remove('dark-mode')
         }
 
 
-    }, [key, false])
+    }, [value])
 
-    return [darkMode, setDarkMode]
+    return [value, setValue]
 }
